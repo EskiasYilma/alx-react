@@ -20,38 +20,33 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
-                use: [
-                    {
+                use: [{
                         loader: 'file-loader',
                         options: {
-                          outputPath: '',
+                            outputPath: '',
                         },
-                      },
-                      {
-                        loader: 'image-webpack-loader',
-                        options: {
-                          bypassOnDebug: true,
-                          disable: true,
-                        },                        
-                      },
+                    },
+                    {
+                        loader: 'image-webpack-loader', // Add image optimization
+                    },
                 ],
             },
         ],
     },
     performance: {
         hints: false,
-        maxEntrypointSize: 500000,
-        maxAssetSize: 500000,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000,
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin(),
-      ],
+    ],
 
     devtool: 'inline-source-map',
     devServer: {
-      port: 8564,
-      contentBase: path.join(__dirname, './public'),
-      compress: true,      
+        port: 8564,
+        contentBase: path.join(__dirname, './public'),
+        compress: true,
     },
 };
