@@ -1,13 +1,11 @@
 import $ from 'jquery';
 import _ from 'lodash'
 
-const paragraph1 = $('<p>').text('Holberton Dashboard');
-const paragraph2 = $('<p>').text('Dashboard data for the students');
-const btn = $('<button>').text('Click here to get started');
-const paragraph3 = $('<p>').attr('id', 'count');
-const paragraph4 = $('<p>').text('Copyright - Holberton School');
-
-$('body').append(paragraph1, paragraph2, btn, paragraph3, paragraph4);
+$('body').append("<p>Holberton Dashboard</p>");
+$('body').append("<p>Dashboard data for the students</p>");
+$('body').append("<button>Click here to get started</button>");
+$('body').append("<p id='count'></p>");
+$('body').append("<p>Copyright - Holberton School</p>");
 
 let counter = 0;
 
