@@ -49,4 +49,9 @@ module.exports = {
         contentBase: path.join(__dirname, './public'),
         compress: true,
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
+    },
 };
