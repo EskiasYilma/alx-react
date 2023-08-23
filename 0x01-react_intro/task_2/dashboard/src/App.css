@@ -19,7 +19,7 @@
 
 .App-body {
     margin: 20px;
-    height: 60%;
+    height: max-content;
     padding: 2em;
 }
 
@@ -29,10 +29,15 @@
     padding: 20px;
     color: rgb(0, 0, 0);
     font-style: italic;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
+
 label {
     padding-right: 10px;
 }
+
 button {
     background-color: rgb(255, 255, 255);
 }
