@@ -18,7 +18,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(jpg|png)$/i,
@@ -28,18 +28,18 @@ module.exports = {
             loader: 'image-webpack-loader',
             options: {
               bypassOnDebug: true,
-              disable: true,
-            },
-          },
-        ],
+              disable: true
+            }
+          }
+        ]
       },
       {
         test: /\.jsx?$/i,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-        },
-      },
-    ],
-  },
+          loader: 'babel-loader'
+        }
+      }
+    ]
+  }
 };
