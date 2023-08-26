@@ -6,10 +6,10 @@
     width: 95vw;
 }
 
-ul li[data-priority="urgent"] {
+[data-notification-type='urgent'] {
     color: red;
 }
 
-ul li[data-priority="default"] {
+[data-notification-type='default'] {
     color: blue;
 }
