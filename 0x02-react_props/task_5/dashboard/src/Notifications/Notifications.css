@@ -1,9 +1,6 @@
 .Notifications {
     padding: 1em;
     border: 2px dashed red;
-    position: relative;
-    top: 10px;
-    width: 95vw;
 }
 
 [data-notification-type='urgent'] {

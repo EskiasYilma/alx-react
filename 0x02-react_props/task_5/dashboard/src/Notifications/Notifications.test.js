@@ -2,6 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Notifications from './Notifications';
 
+const listNotifications = [
+    { id: 1, type: 'default', value: 'New course available' },
+    { id: 2, type: 'urgent', value: 'New resume available' },
+    { id: 3, type: 'urgent', html: getLatestNotification() },
+];
+
 describe('Notifications component', () => {
     it('renders without crashing', () => {
         shallow(<Notifications />);
@@ -46,5 +52,14 @@ describe('Notifications component', () => {
     it('displays div.Notifications when displayDrawer is true', () => {
         const wrapper = shallow(<Notifications displayDrawer={true} />);
         expect(wrapper.find('.Notifications').length).toBe(1);
+    });
+    it('renders correctly when listCourses is not passed', () => {
+        const wrapper = shallow(<Notifications displayDrawer={true} />);
+
+        expect(
+            wrapper.containsMatchingElement(
+                <li data-notification-type='default'>No new notification for now</li>
+            )
+        );
     });
 });
