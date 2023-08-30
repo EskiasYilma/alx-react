@@ -1,0 +1,13 @@
+.login {
+    margin: 20px;
+    height: max-content;
+    padding: 2em;
+}
+
+label {
+    padding-right: 10px;
+}
+
+button {
+    background-color: rgb(255, 255, 255);
+}
