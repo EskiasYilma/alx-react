@@ -20,7 +20,7 @@ class NotificationItem extends React.Component {
     } else if (html) {
       li = (
         <li
-          data-urgent
+          data-notification-type={type}
           onClick={() => markAsRead(id)}
           dangerouslySetInnerHTML={{ __html: html }}
         ></li>
@@ -45,7 +45,10 @@ NotificationItem.propTypes = {
 
 NotificationItem.defaultProps = {
   type: 'default',
+  html: {},
+  value: '',
   markAsRead: () => {},
+  id: NaN,
 };
 
 export default NotificationItem;
