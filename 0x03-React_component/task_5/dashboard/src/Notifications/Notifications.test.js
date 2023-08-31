@@ -72,11 +72,51 @@ describe('Notifications component', () => {
     });
     it('renders when listCourses is not passed', () => {
         const wrapper = shallow(<Notifications displayDrawer={true} />);
-
         expect(
             wrapper.containsMatchingElement(
                 <li data-notification-type='default'>No new notification for now</li>
             )
+        );
+    });
+    it('renders "No new notifications for now" when listNotifications is empty', () => {
+        const wrapper = shallow(
+            <Notifications displayDrawer={true} listNotifications={[]} />
+        );
+        expect(
+            wrapper.containsMatchingElement(<p>Here is the list of notifications</p>)
+        ).toBe(false);
+        expect(
+            wrapper.containsMatchingElement(
+                <li data-notification-type='default'>No new notification for now</li>
+            )
+        );
+    });
+    it('shouldComponentUpdate function re-render test', () => {
+        const wrapper = shallow(
+            <Notifications
+                displayDrawer={true}
+                listNotifications={listNotifications}
+            />
+        );
+        expect(wrapper.instance().shouldComponentUpdate(listNotifications)).toBe(
+            false
+        );
+    });
+    it('shouldComponentUpdate function render test', () => {
+        const newNotifications = [
+            { id: 1, type: 'default', value: 'New course available' },
+            { id: 2, type: 'urgent', value: 'New resume available' },
+            { id: 3, type: 'default', html: getLatestNotification() },
+            { id: 4, type: 'default', value: 'new Notification' },
+        ];
+        const wrapper = shallow(
+            <Notifications
+                displayDrawer={true}
+                listNotifications={listNotifications}
+            />
+        );
+        expect(wrapper.instance().shouldComponentUpdate(newNotifications)).toBe(
+            true
         );
     });
 });
