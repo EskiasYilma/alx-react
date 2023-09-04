@@ -1,0 +1,12 @@
+.header {
+  font-size: 1.2rem;
+  color: #e0354b;
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid #e0354b;
+}
+
+.header img {
+  height: 200px;
+  pointer-events: none;
+}
