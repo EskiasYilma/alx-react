@@ -5,20 +5,20 @@ const headerInline = {
   backgroundColor: '#deb5b545',
 };
 
-const normalRowInline = {
+const normalInline = {
   backgroundColor: '#f5f5f5ab',
 };
 
 const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
   return (
-    <tr style={normalRowStyle}>
+    <tr style={normalInline}>
       {isHeader ? (
         textSecondCell === null ? (
-          <th style={headerStyle} colSpan={2}>{textFirstCell}</th>
+          <th style={headerInline} colSpan={2}>{textFirstCell}</th>
         ) : (
           <>
-            <th style={headerStyle}>{textFirstCell}</th>
-            <th style={headerStyle}>{textSecondCell}</th>
+            <th style={headerInline}>{textFirstCell}</th>
+            <th style={headerInline}>{textSecondCell}</th>
           </>
         )
       ) : (
