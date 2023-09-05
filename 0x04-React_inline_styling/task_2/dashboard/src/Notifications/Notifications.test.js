@@ -45,7 +45,7 @@ describe('Notifications component', () => {
         const nItem = wrapper.find('NotificationItem');
         expect(nItem).toBeDefined();
         expect(nItem.first().html()).toEqual(
-            '<li data-notification-type="default">New course available</li>'
+            '<li class="default_1tsdo2i" data-notification-type="default">New course available</li>'
         );
     });
     it('renders the text "Your notifications"', () => {

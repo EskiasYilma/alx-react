@@ -1,5 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StyleSheet, css } from 'aphrodite';
+
+const appStyles = StyleSheet.create({
+  urgent: {
+    color: 'red',
+  },
+  default: {
+    color: 'blue',
+  },
+});
 
 class NotificationItem extends React.PureComponent {
   constructor(props) {
@@ -12,13 +22,14 @@ class NotificationItem extends React.PureComponent {
 
     if (type && value) {
       li = (
-        <li data-notification-type={type} onClick={() => markAsRead(id)}>
+        <li className={css(appStyles[type])} data-notification-type={type} onClick={() => markAsRead(id)}>
           {value}
         </li>
       );
     } else if (html) {
       li = (
         <li
+          className={css(appStyles[type])}
           data-notification-type={type}
           onClick={() => markAsRead(id)}
           dangerouslySetInnerHTML={{ __html: html }}

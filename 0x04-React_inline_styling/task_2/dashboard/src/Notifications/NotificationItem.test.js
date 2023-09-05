@@ -27,6 +27,6 @@ describe('NotificationItem component', () => {
     const wrapper = shallow(<NotificationItem />);
 
     wrapper.setProps({ html: '<u>test</u>' });
-    expect(wrapper.html()).toEqual('<li data-notification-type="default"><u>test</u></li>');
+    expect(wrapper.html()).toEqual('<li class="default_1tsdo2i" data-notification-type="default"><u>test</u></li>');
   });
 });
