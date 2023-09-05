@@ -15,10 +15,10 @@ describe('Login component', () => {
   });
   it('renders Footer', () => {
     const wrapper = shallow(<Footer />);
-    expect(wrapper.find('footer.footer')).toHaveLength(1);
+    expect(wrapper.find('footer')).toHaveLength(1);
   });
   it('renders footer copyright', () => {
     const wrapper = shallow(<Footer />);
-    expect(wrapper.find('.footer p').text()).toContain('Copyright');
+    expect(wrapper.find('footer p').text()).toContain('Copyright');
   });
 });
