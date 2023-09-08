@@ -73,7 +73,8 @@ class Notifications extends React.PureComponent {
   }
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.length > this.props.listNotifications.length;
+    return nextProps.length > this.props.listNotifications.length ||
+      nextProps.displayDrawer !== this.props.displayDrawer;
   }
 
   markAsRead(id) {

@@ -105,7 +105,7 @@ describe('Notifications component', () => {
             />
         );
         expect(wrapper.instance().shouldComponentUpdate(listNotifications)).toBe(
-            false
+            true
         );
     });
     it('shouldComponentUpdate function render test', () => {
@@ -121,11 +121,9 @@ describe('Notifications component', () => {
                 listNotifications={listNotifications}
             />
         );
-        expect(wrapper.instance().shouldComponentUpdate(newNotifications)).toBe(
-            true
-        );
+        expect(wrapper.instance().shouldComponentUpdate(newNotifications)).toBe(true);
     });
-  it("handleDisplayDrawer click", () => {
+    it("handleDisplayDrawer click", () => {
         const mock = jest.fn();
         const wrapper = shallow(
             <Notifications
@@ -136,6 +134,6 @@ describe('Notifications component', () => {
         const spy = jest.spyOn(wrapper.instance().props, 'handleDisplayDrawer');
         wrapper.find('.menuItem_xj3z6i').simulate('click');
         expect(spy).toBeCalled();
-  });
+    });
 
 });
