@@ -135,5 +135,18 @@ describe('Notifications component', () => {
         wrapper.find('.menuItem_xj3z6i').simulate('click');
         expect(spy).toBeCalled();
     });
+    it('handleHideDrawer click', () => {
+        const mock = jest.fn();
+        const wrapper = shallow(
+            <Notifications
+                displayDrawer={true}
+                listNotifications={listNotifications}
+                handleHideDrawer={mock}
+            />
+        );
+        const spy = jest.spyOn(wrapper.instance().props, 'handleHideDrawer');
+        wrapper.find('button').simulate('click');
 
+        expect(spy).toBeCalled();
+    });
 });

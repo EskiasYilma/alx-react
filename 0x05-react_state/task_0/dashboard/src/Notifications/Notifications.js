@@ -105,8 +105,10 @@ class Notifications extends React.PureComponent {
                     )
                   )
                 ) : (
-                  <div className={css(appStyles['notificationHeader'])}>
-                    <NotificationItem value='No new notification for now' />
+                <NotificationItem value='No new notification for now' />
+              )}
+            </ul>
+
                     <button
                       aria-label='Close'
                       onClick={() => {
@@ -121,9 +123,6 @@ class Notifications extends React.PureComponent {
 
                       />
                     </button>
-                  </div>
-                )}
-              </ul>
             </div>
           </div>
         ) : (
