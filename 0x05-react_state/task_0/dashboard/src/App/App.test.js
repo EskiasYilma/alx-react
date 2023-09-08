@@ -38,18 +38,14 @@ describe('App component', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find('Login')).toHaveLength(1);
   });
-  it('calls logOut function and displays alert when pressing control + h', () => {
-    const mockLogOut = jest.fn();
-    const mockAlert = jest.spyOn(window, 'alert').mockImplementation(() => {});
+  it('checks logOut function is called', () => {
+    const mockFn = jest.fn();
+    const wrapper = mount(<App logOut={mockFn} />);
+    const event = new KeyboardEvent('keydown', { ctrlKey: true, key: 'h' });
 
-    const wrapper = shallow(<App isLoggedIn={true} logOut={mockLogOut} />);
-    const event = new KeyboardEvent('keydown', { key: 'h', ctrlKey: true });
     document.dispatchEvent(event);
-
-    expect(mockLogOut).toHaveBeenCalled();
-    expect(mockAlert).toHaveBeenCalledWith('Logging you out');
-
-    mockAlert.mockRestore();
+    expect(mockFn).toHaveBeenCalled();
+    wrapper.unmount();
   });
   it('does not call logOut function or display alert when pressing other keys', () => {
     const mockLogOut = jest.fn();

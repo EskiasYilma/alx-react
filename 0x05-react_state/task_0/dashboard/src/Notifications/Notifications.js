@@ -94,7 +94,7 @@ class Notifications extends React.PureComponent {
                 {this.props.listNotifications &&
                 this.props.listNotifications.length > 0 ? (
                   this.props.listNotifications.map(
-                    ({ id, html, type, value }) => (
+                    ({ type, html, value, id }) => (
                       <NotificationItem
                         key={id}
                         markAsRead={this.markAsRead}

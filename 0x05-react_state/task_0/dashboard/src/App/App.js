@@ -30,6 +30,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      ctrlPressed: false,
       displayDrawer: false,
     };
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
@@ -37,13 +38,21 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyDown);
-    document.addEventListener('keyup', this.handleKeyUp);
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.key === 'h') {
+        alert('Logging you out');
+        this.props.logOut();
+      }
+    });
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyDown);
-    document.removeEventListener('keyup', this.handleKeyUp);
+    document.removeEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.key === 'h') {
+        alert('Logging you out');
+        this.props.logOut();
+      }
+    });
   }
 
   handleKeyDown = (event) => {
@@ -85,7 +94,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div className={css(appStyles['header_topp'], appStyles['mobile-view'])}>
           <Notifications  listNotifications={this.listNotifications}
                           displayDrawer={this.state.displayDrawer}
@@ -109,14 +118,14 @@ class App extends React.Component {
             </p>
           </BodySection>
           <Footer />
-      </React.Fragment>
+      </>
     );
   }
 }
 
 App.defaultProps = {
   isLoggedIn: false,
-  logOut: () => {},
+  logOut: () => {return;},
 };
 
 App.propTypes = {
