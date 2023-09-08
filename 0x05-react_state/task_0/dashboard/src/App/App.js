@@ -30,47 +30,26 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ctrlPressed: false,
       displayDrawer: false,
     };
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
+    this.handleCtrl = this.handleCtrl.bind(this);
   }
-
-  componentDidMount() {
-    document.addEventListener('keydown', (e) => {
-      if (e.ctrlKey && e.key === 'h') {
-        alert('Logging you out');
-        this.props.logOut();
-      }
-    });
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', (e) => {
-      if (e.ctrlKey && e.key === 'h') {
-        alert('Logging you out');
-        this.props.logOut();
-      }
-    });
-  }
-
-  handleKeyDown = (event) => {
-    if (event.key === 'Control') {
-      this.setState({ ctrlPressed: true });
-    }
-    if (this.state.ctrlPressed && event.key === 'h') {
-      event.preventDefault();
+  handleCtrl (e) {
+    if (e.key === 'h' && e.ctrlKey) {
       alert('Logging you out');
       this.props.logOut();
     }
-  };
+  }
 
-  handleKeyUp = (event) => {
-    if (event.key === 'Control') {
-      this.setState({ ctrlPressed: false });
-    }
-  };
+  componentDidMount () {
+    document.addEventListener('keydown', this.handleCtrl);
+  }
+
+  componentWillUnmount () {
+    document.removeEventListener('keydown', this.handleCtrl);
+  }
 
   handleDisplayDrawer() {
     this.setState({ displayDrawer: true });
@@ -94,7 +73,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
+      <React.Fragment>
         <div className={css(appStyles['header_topp'], appStyles['mobile-view'])}>
           <Notifications  listNotifications={this.listNotifications}
                           displayDrawer={this.state.displayDrawer}
@@ -118,14 +97,14 @@ class App extends React.Component {
             </p>
           </BodySection>
           <Footer />
-      </>
+      </React.Fragment>
     );
   }
 }
 
 App.defaultProps = {
   isLoggedIn: false,
-  logOut: () => {return;},
+  logOut: () => {},
 };
 
 App.propTypes = {

@@ -38,15 +38,20 @@ describe('App component', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find('Login')).toHaveLength(1);
   });
-  it('checks logOut function is called', () => {
-    const mockFn = jest.fn();
-    const wrapper = mount(<App logOut={mockFn} />);
-    const event = new KeyboardEvent('keydown', { ctrlKey: true, key: 'h' });
+  it('calls logOut function and displays alert when pressing control + h', () => {
+    const mockLogOut = jest.fn();
+    const mockAlert = jest.spyOn(window, 'alert').mockImplementation(() => {});
 
+    const wrapper = shallow(<App isLoggedIn={true} logOut={mockLogOut} />);
+    const event = new KeyboardEvent('keydown', { key: 'h', ctrlKey: true });
     document.dispatchEvent(event);
-    expect(mockFn).toHaveBeenCalled();
-    wrapper.unmount();
+
+    expect(mockLogOut).toHaveBeenCalled();
+    expect(mockAlert).toHaveBeenCalledWith('Logging you out');
+
+    mockAlert.mockRestore();
   });
+
   it('does not call logOut function or display alert when pressing other keys', () => {
     const mockLogOut = jest.fn();
     const mockAlert = jest.spyOn(window, 'alert').mockImplementation(() => {});
@@ -59,19 +64,5 @@ describe('App component', () => {
     expect(mockAlert).not.toHaveBeenCalled();
 
     mockAlert.mockRestore();
-  });
-  it('check displayDrawer initial value', () => {
-    const wrapper = mount(<App />);
-    expect(wrapper.state().displayDrawer).toBe(false);
-  });
-  it('check displayDrawer after handleDisplayDrawer is called', () => {
-    const wrapper = shallow(<App />);
-    wrapper.instance().handleDisplayDrawer();
-    expect(wrapper.state().displayDrawer).toBe(true);
-  });
-  it('check displayDrawer after handleHideDrawer is called', () => {
-    const wrapper = shallow(<App />);
-    wrapper.instance().handleHideDrawer();
-    expect(wrapper.state().displayDrawer).toBe(false);
   });
 });

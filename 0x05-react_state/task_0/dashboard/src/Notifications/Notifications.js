@@ -66,7 +66,7 @@ const appStyles = StyleSheet.create({
 });
 
 
-class Notifications extends React.PureComponent {
+class Notifications extends React.Component {
   constructor(props) {
     super(props);
     this.markAsRead = this.markAsRead.bind(this);
