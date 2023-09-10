@@ -24,12 +24,7 @@ const appStyles = StyleSheet.create({
     height: '200px',
     pointerEvents: 'none',
   },
-  greeting: {
-    marginTop: '1rem',
-  },
-  logout: {
-    cursor: 'pointer',
-  },
+
 });
 
 class Header extends React.Component {
@@ -40,22 +35,22 @@ class Header extends React.Component {
 
     return (
       <React.Fragment>
-      <header className={css(appStyles.header)}>
-        <img src={logo} alt="Holberton Logo" className={css(appStyles.img)} />
-        <h1>School dashboard</h1>
-        {user.isLoggedIn && (
-          <div className={css(appStyles.greeting)} id='logoutSection'>
-            Welcome {user.email}{' '}
-            <a className={css(appStyles.logout)} onClick={logOut}>
-              (logout)
-            </a>
-          </div>
-        )}
-      </header>
+        <header className={css(appStyles.header)}>
+          <img src={logo} alt="Holberton Logo" className={css(appStyles.img)} />
+          <h1>School dashboard</h1>
+          {user.isLoggedIn && (
+            <div id='logoutSection'>
+              Welcome {user.email}{' '}
+              <a onClick={logOut}>
+                (logout)
+              </a>
+            </div>
+          )}
+        </header>
 
       </React.Fragment>
     );
   }
 }
-
+Header.contextType = AppContext
 export default Header;
