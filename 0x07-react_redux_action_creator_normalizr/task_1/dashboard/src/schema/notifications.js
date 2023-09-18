@@ -1,5 +1,6 @@
 import { normalize, schema } from 'normalizr';
 import notificationsJson from '../../../../notifications.json';
+
 const userSchema = new schema.Entity('users');
 const messageSchema = new schema.Entity('messages', {}, { idAttribute: 'guid' });
 const notificationSchema = new schema.Entity('notification', {
