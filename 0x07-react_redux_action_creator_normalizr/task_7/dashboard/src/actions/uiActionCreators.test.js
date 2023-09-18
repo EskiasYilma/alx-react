@@ -40,7 +40,7 @@ it('HIDE_NOTIFICATION_DRAWER test', () => {
     expect(hideNotificationDrawer()).toEqual(expected);
 });
 
-describe('Login Actions', () => {
+describe('LOGIN Actions', () => {
   const middlewares = [thunk];
   const mockStore = configureMockStore(middlewares);
   afterEach(() => {
@@ -60,7 +60,6 @@ describe('Login Actions', () => {
 
     return store.dispatch(loginRequest(email, password)).then(() => {
       const actions = store.getActions();
-      console.log(actions);
       expect(actions[0]).toEqual(login(email, password));
     });
   });
