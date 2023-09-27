@@ -15,7 +15,7 @@ import { fromJS } from "immutable";
 import uiReducer, { defaultCase } from "../reducers/uiReducer";
 import { createStore } from "redux";
 
-const store = createStore(uiReducer, defaultCase);
+const store = createStore(uiReducer, initialState);
 
 it("mapStateToProps function returns the right object when passing the { isLoggedIn: true }", () => {
   let newState = fromJS({
@@ -26,7 +26,14 @@ it("mapStateToProps function returns the right object when passing the { isLogge
   expect(loggedinCase).toEqual(expectedCase);
 });
 
-
+it('should return the right object from displayDrawer', () => {
+  const state = fromJS({
+    isNotificationDrawerVisible: true,
+  });
+  const notificationVisible = mapStateToProps(state);
+  const expectedCase = { displayDrawer: true }
+  expect(notificationVisible).toEqual(expectedCase);
+});
 // beforeEach(() => {
 //   StyleSheetTestUtils.suppressStyleInjection();
 // });
