@@ -26,7 +26,7 @@ it("mapStateToProps function returns the right object when passing the { isLogge
   expect(loggedinCase).toEqual(expectedCase);
 });
 
-it('should return the right object from displayDrawer', () => {
+it('mapStateToProps function returns the right object when passing the { displayDrawer: true }', () => {
   const state = fromJS({
     isNotificationDrawerVisible: true,
   });
