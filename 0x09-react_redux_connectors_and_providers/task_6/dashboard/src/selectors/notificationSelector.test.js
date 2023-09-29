@@ -1,24 +1,15 @@
 import { Map, fromJS } from 'immutable';
-
-import {
-    filterTypeSelected,
-    getNotifications,
-    getUnreadNotifications,
-} from './notificationSelector';
-
-import { notificationReducer,
-    defaultNotificationCase,
-} from '../reducers/notificationReducer';
-
+import { notificationReducer, defaultNotificationCase } from '../reducers/notificationReducer';
+import { filterTypeSelected, getNotifications, getUnreadNotifications } from './notificationSelector';
 import {notificationsNormalizer} from '../schema/notifications';
 
-    it('test that filterTypeSelected works as expected', function () {
-        const state = notificationReducer(undefined, {});
+it('test filterTypeSelected default', function () {
+    const state = notificationReducer(undefined, {});
 
-        const selected = filterTypeSelected(state);
+    const selected = filterTypeSelected(state);
 
-        expect(selected).toEqual(defaultNotificationCase.toJS()['filter']);
-    });
+    expect(selected).toEqual(defaultNotificationCase.toJS()['filter']);
+});
 
 // import { Map, List } from 'immutable';
 // import {
